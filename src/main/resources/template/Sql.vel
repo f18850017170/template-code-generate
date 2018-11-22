@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="com.zuche.balance.core.${subPackage}.dao.${u1stTableName}Dao">
+
+     <insert id="add" parameterClass="com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean" >
+        INSERT INTO ${nativeTable} (
+         #foreach( ${column} in ${columns})
+         ${column.nativeColumnName} #if( $foreach.count !=$foreach.last ),#end
+
+         #end
+
+        ) VALUES (
+         #foreach( ${column} in ${columns})
+         #${column.columnName}# #if( $foreach.count !=$foreach.last ),#end
+
+         #end
+        )
+    </insert>
+
+	<update id="update" parameterClass="com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean">
+		UPDATE
+            ${nativeTable}
+        SET
+        #foreach( ${column} in ${columns})
+
+            <isNotEmpty property="${column.columnName}" prepend=",">
+                ${column.nativeColumnName} =  #${column.columnName}#
+            </isNotEmpty>
+        #end
+
+        WHERE
+        <dynamic prepend=" ">
+        #foreach( ${column} in ${columns})
+
+            <isNotEmpty property="${column.columnName}" prepend="and">
+                 ${column.nativeColumnName} =  #${column.columnName}#
+            </isNotEmpty>
+        #end
+
+        </dynamic>
+    </update>
+</sqlMap>

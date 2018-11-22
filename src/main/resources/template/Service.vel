@@ -1,0 +1,24 @@
+package com.zuche.balance.core.${subPackage}.service;
+
+
+import com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean;
+
+/**
+ * Description: ${tableComment}
+ * @version 1.0 ${time} by ${author} 创建
+ */
+public interface ${u1stTableName}Service {
+
+	/**
+	 * Description: 新增或修改
+	 * @version 1.0 ${time} by ${author} 创建
+	 */
+	${u1stTableName}Bean addOrUpdate(${u1stTableName}Bean bean);
+
+	/**
+	 * Description: 根据ID获取
+	 * @version 1.0 ${time} by ${author} 创建
+	 */
+	${u1stTableName}Bean getById(Long id);
+
+}

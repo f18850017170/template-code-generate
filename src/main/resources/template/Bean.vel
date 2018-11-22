@@ -1,0 +1,34 @@
+package com.zuche.balance.pojo.${subPackage};
+
+import java.io.Serializable;
+#foreach( ${elem} in ${typeImported})
+${elem}
+#end
+
+import com.zuche.balance.common.framework.pojo.BaseVO;
+
+/**
+ * Description: ${tableComment} ${nativeTable}
+ * @version 1.0 ${time} by ${author} 创建
+ */
+public class ${u1stTableName}Bean extends BaseVO implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+    #foreach( ${column} in ${columns})
+
+    /** ${column.comment} */
+    private ${column.javaType} ${column.columnName};
+    #end
+
+    #foreach( ${column} in ${columns})
+
+    public ${column.javaType} get${column.methodColumnName}() {
+    	return $column.columnName;
+    }
+    public void set${column.methodColumnName}(${column.javaType} ${column.columnName}) {
+        this.${column.columnName} = ${column.columnName};
+    }
+    #end
+
+
+}

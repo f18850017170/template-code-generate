@@ -1,0 +1,32 @@
+package com.zuche.balance.core.${subPackage}.service.impl;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.zuche.balance.core.${subPackage}.dao.${u1stTableName}Dao;
+import com.zuche.balance.core.${subPackage}.service.${u1stTableName}Service;
+import com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean;
+
+@Service
+public class ${u1stTableName}ServiceImpl implements ${u1stTableName}Service {
+
+	@Autowired
+	private ${u1stTableName}Dao ${tableName}Dao;
+
+	@Override
+	public ${u1stTableName}Bean addOrUpdate(${u1stTableName}Bean bean) {
+		if(bean.getId()==null) {
+			${tableName}Dao.add(bean);
+		}else {
+			${tableName}Dao.update(bean);
+		}
+		return bean;
+	}
+
+	@Override
+	public ${u1stTableName}Bean getById(Long id) {
+		return ${tableName}Dao.getById(id);
+	}
+
+}

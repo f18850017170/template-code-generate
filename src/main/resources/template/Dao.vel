@@ -1,0 +1,46 @@
+package com.zuche.balance.core.${subPackage}.dao;
+
+
+import org.springframework.stereotype.Repository;
+
+import com.zuche.balance.common.framework.dao.BaseDao;
+import com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean;
+
+/**
+ * Description: ${tableComment} ${nativeTable}
+ * @version 1.0 ${time} by ${author} 创建
+ */
+@Repository
+public class ${u1stTableName}Dao extends BaseDao {
+
+	/**
+	 * Description: 插入一条记录
+	 * @version 1.0 ${time} by ${author} 创建
+	 */
+	public void add(${u1stTableName}Bean bean) {
+		Long id = super.add("add", bean);
+		bean.setId(id);
+	}
+
+	/**
+	 * Description: 更新，null属性不更新
+	 * @version 1.0 ${time} by ${author} 创建
+	 */
+	public void update(${u1stTableName}Bean bean) {
+		super.upt("update", bean);
+	}
+
+	/**
+	 * Description: 根据ID读取一条记录
+	 * @version 1.0 ${time} by ${author} 创建
+	 */
+	public ${u1stTableName}Bean getById(Long id) {
+		if(id == null) {
+			return null;
+		}
+		${u1stTableName}Bean form = new ${u1stTableName}Bean();
+		form.setId(id);
+		return getOne("query", form);
+	}
+
+}
