@@ -18,7 +18,7 @@ public class ${u1stTableName}Dao extends BaseDao {
 	 * @version 1.0 ${time} by ${author} 创建
 	 */
 	public void add(${u1stTableName}Bean bean) {
-		Long id = super.add("add", bean);
+		Long id = super.add("com.zuche.balance.core.${subPackage}.dao.${u1stTableName}Dao.add", bean);
 		bean.setId(id);
 	}
 
@@ -27,7 +27,7 @@ public class ${u1stTableName}Dao extends BaseDao {
 	 * @version 1.0 ${time} by ${author} 创建
 	 */
 	public void update(${u1stTableName}Bean bean) {
-		super.upt("update", bean);
+		super.update("com.zuche.balance.core.${subPackage}.dao.${u1stTableName}Dao.update", bean);
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class ${u1stTableName}Dao extends BaseDao {
 		}
 		${u1stTableName}Bean form = new ${u1stTableName}Bean();
 		form.setId(id);
-		return getOne("query", form);
+		return getOne("com.zuche.balance.core.${subPackage}.dao.${u1stTableName}Dao.query", form);
 	}
 
 }

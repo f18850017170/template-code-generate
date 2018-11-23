@@ -5,13 +5,13 @@
      <insert id="add" parameterClass="com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean" >
         INSERT INTO ${nativeTable} (
          #foreach( ${column} in ${columns})
-         ${column.nativeColumnName} #if( $foreach.count !=$foreach.last ),#end
+         ${column.nativeColumnName} #if( $foreach.count !=$columns.size()), #end
 
          #end
 
         ) VALUES (
          #foreach( ${column} in ${columns})
-         #${column.columnName}# #if( $foreach.count !=$foreach.last ),#end
+         #${column.columnName}# #if( $foreach.count !=$columns.size()), #end
 
          #end
         )
@@ -39,4 +39,17 @@
 
         </dynamic>
     </update>
+
+    <select id="query" parameterClass="com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean" resultClass="com.zuche.balance.pojo.${subPackage}.${u1stTableName}Bean">
+        SELECT
+        #foreach( ${column} in ${columns})
+        ${column.nativeColumnName} ${column.columnName}#if( $foreach.count !=$columns.size()), #end
+
+        #end
+
+        FROM
+            ${nativeTable} t
+        WHERE
+            t.id=#id#
+        </select>
 </sqlMap>
